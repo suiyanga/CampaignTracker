@@ -1,0 +1,9 @@
+# Node modules for both projects
+node_modules/
+
+.innext/
+.next/
+
+dist/
+
+.env
