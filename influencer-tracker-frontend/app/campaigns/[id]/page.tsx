@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, FormEvent } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 
 interface Campaign {
   _id: string;
@@ -12,7 +12,6 @@ interface Campaign {
 
 export default function CampaignDetailsPage() {
   const { id } = useParams();
-  const router = useRouter();
   const [campaign, setCampaign] = useState<Campaign | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,9 +30,11 @@ export default function CampaignDetailsPage() {
         }
         const data = await response.json();
         setCampaign(data);
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const errorMessage =
+          err instanceof Error ? err.message : 'Unexpected error occurred while fetching campaign';
         console.error(err);
-        setError(err.message || 'Unexpected error occurred while fetching campaign');
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
@@ -64,9 +65,11 @@ export default function CampaignDetailsPage() {
       const result = await response.json();
       setSubmitSuccess(result.message || 'Submission successful!');
       setSubmission('');
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errorMessage =
+        err instanceof Error ? err.message : 'Submission failed due to an unexpected error.';
       console.error(err);
-      setSubmitError(err.message || 'Submission failed due to an unexpected error.');
+      setSubmitError(errorMessage);
     }
   };
 

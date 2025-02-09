@@ -19,24 +19,23 @@ export default function CampaignListPage() {
     const fetchCampaigns = async () => {
       try {
         const response = await fetch('http://localhost:3001/campaigns');
-        // If the request fails, this block might not be reached.
-        console.log('Response status:', response.status);
-        const text = await response.text();
-        console.log('Raw response:', text);
-        const data = JSON.parse(text);
+        if (!response.ok) {
+          throw new Error(`Error fetching campaigns: ${response.statusText}`);
+        }
+        const data = await response.json();
         setCampaigns(data);
-      } catch (err: any) {
-        console.error('Error fetching campaigns:', err);
-        setError(err.message || 'Unexpected error occurred');
+      } catch (err: unknown) {
+        const errorMessage =
+          err instanceof Error ? err.message : 'Unexpected error occurred';
+        console.error(err);
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
     };
-  
+
     fetchCampaigns();
   }, []);
-  
-  
 
   if (loading) {
     return <p className="text-center mt-10">Loading campaigns...</p>;
