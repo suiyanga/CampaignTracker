@@ -58,6 +58,9 @@
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
