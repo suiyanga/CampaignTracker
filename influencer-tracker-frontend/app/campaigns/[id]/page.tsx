@@ -24,7 +24,8 @@ export default function CampaignDetailsPage() {
 
     const fetchCampaign = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/campaigns/${id}`);
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${API_URL}/campaigns/${id}`);
         if (!response.ok) {
           throw new Error(`Error fetching campaign: ${response.statusText}`);
         }
@@ -49,7 +50,8 @@ export default function CampaignDetailsPage() {
     setSubmitSuccess(null);
 
     try {
-      const response = await fetch(`http://localhost:3001/campaigns/${id}/submission`, {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(`${API_URL}/campaigns/${id}/submission`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

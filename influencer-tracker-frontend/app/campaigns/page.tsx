@@ -18,7 +18,10 @@ export default function CampaignListPage() {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const response = await fetch('http://localhost:3001/campaigns');
+        const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+        const response = await fetch(`${API_URL}/campaigns`);
+
         if (!response.ok) {
           throw new Error(`Error fetching campaigns: ${response.statusText}`);
         }
