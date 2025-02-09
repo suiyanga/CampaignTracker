@@ -1,4 +1,3 @@
-// app/layout.tsx
 import Link from 'next/link';
 import './globals.css';
 

@@ -1,8 +1,18 @@
-// src/campaigns/campaigns.controller.ts
-
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { CampaignsService } from './campaigns.service';
 import { CreateSubmissionDto } from './dto/create-submission.dto';
+
+@Controller()
+export class RootController {
+  /**
+   * GET /
+   * Returns a welcome message for the API root.
+   */
+  @Get()
+  getRootRoute() {
+    return { message: "Welcome to CampaignTracker API!" };
+  }
+}
 
 @Controller('campaigns')
 export class CampaignsController {

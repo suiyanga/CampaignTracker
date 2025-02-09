@@ -1,4 +1,3 @@
-// src/campaigns/dto/create-submission.dto.ts
 import { IsString, IsOptional } from 'class-validator';
 
 export class CreateSubmissionDto {

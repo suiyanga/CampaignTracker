@@ -1,5 +1,3 @@
-// src/campaigns/campaigns.service.ts
-
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -51,8 +49,6 @@ export class CampaignsService {
     }
 
     // Process the submission.
-    // For now, we simply log the data; in a full application,
-    // you might update the campaign document or create a new submission record.
     console.log(`Received submission for campaign ${id}:`, createSubmissionDto);
 
     // Return a confirmation message.
