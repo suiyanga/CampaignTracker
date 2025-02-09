@@ -55,14 +55,6 @@ The application uses a **monorepo** structure, where:
 - A MongoDB database (using MongoDB Atlas is recommended for production or shared development)
 - Git
 
-### Setup
-
-#### 1. Clone the Repository
-
-```bash
-git clone https://github.com/suiyanga/CampaignTracker.git
-cd CampaignTracker
- ```
 
 ### Setup
 
