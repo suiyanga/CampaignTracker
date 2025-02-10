@@ -8,7 +8,6 @@ import { CampaignsModule } from './campaigns/campaigns.module';
     ConfigModule.forRoot({
       isGlobal: true, 
     }),
-  // Use MongooseModule.forRootAsync to load the URI from environment variables.
     MongooseModule.forRootAsync({
       imports: [ConfigModule], 
       useFactory: async (configService: ConfigService) => ({
