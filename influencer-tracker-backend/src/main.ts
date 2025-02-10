@@ -6,10 +6,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['https://campaign-tracker-gamma.vercel.app/'], 
+    origin: [
+      'http://localhost:3000',  // Allow local development frontend
+      'https://campaign-tracker-gamma.vercel.app', // Allow deployed frontend
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, 
+    credentials: true,
   });
 
   app.useGlobalPipes(
@@ -21,5 +24,7 @@ async function bootstrap() {
   );
 
   await app.listen(process.env.PORT ?? 3001);
+  console.log(`Server running on port ${process.env.PORT ?? 3001}`);
 }
+
 bootstrap();
